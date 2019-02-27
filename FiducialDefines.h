@@ -16,7 +16,7 @@ namespace ipa_Fiducials {
 #endif
 
 /// Define, if we need to import or export the libraries
-#ifdef __LINUX__
+#ifdef __linux__
 	#define __DLL_LIBFIDUCIALS__ 
 	#define APIENTRY
 #else

@@ -31,7 +31,6 @@ target_link_libraries(${PROJECT_NAME}
   ${OpenCV_LIBS}
   ${TinyXML_LIBRARIES}
 )
-set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-D__LINUX__")
 
 add_executable(pitag-test
   pitag-test.cpp
@@ -41,7 +40,6 @@ target_link_libraries(pitag-test
   ${OpenCV_LIBS}
   ${TinyXML_LIBRARIES}
 )
-set_target_properties(pitag-test PROPERTIES COMPILE_FLAGS "-D__LINUX__")
 
 #############
 ## Install ##
