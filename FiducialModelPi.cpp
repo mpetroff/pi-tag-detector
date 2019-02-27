@@ -1232,9 +1232,9 @@ unsigned long FiducialModelPi::GetPoints(cv::Mat& image, std::vector<t_points>& 
             {
                 cv::Matx33d refined_ellipse;
                 
-                if (cv::runetag::ellipserefine(final_tag_vec[i].image_points[j], gradient_x, gradient_y, refined_ellipse))
+                if (cv::runetag::ipa_Fiducials::ellipserefine(final_tag_vec[i].image_points[j], gradient_x, gradient_y, refined_ellipse))
                 {                
-                    cv::Point2d ellipse_center = cv::runetag::ellipseCenter(refined_ellipse);
+                    cv::Point2d ellipse_center = cv::runetag::ipa_Fiducials::ellipseCenter(refined_ellipse);
                     
                     cv::circle( refine_image, final_tag_vec[i].image_points[j].center, 1, CV_RGB(0,255,0) );
                     cv::circle( refine_image, ellipse_center, 1, CV_RGB(0,0,255) );
