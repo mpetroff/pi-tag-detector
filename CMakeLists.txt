@@ -3,7 +3,8 @@ project(pitag)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
-set (CMAKE_CXX_STANDARD 11)
+set( CMAKE_CXX_STANDARD 11 )
+list( APPEND CMAKE_CXX_FLAGS "-O3 -fpic" )
 
 find_package(OpenCV REQUIRED)
 find_package(TinyXML REQUIRED)
