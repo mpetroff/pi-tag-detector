@@ -42,3 +42,17 @@ target_link_libraries(pitag-test
   ${TinyXML_LIBRARIES}
 )
 set_target_properties(pitag-test PROPERTIES COMPILE_FLAGS "-D__LINUX__")
+
+#############
+## Install ##
+#############
+
+install( FILES
+         ${PROJECT_SOURCE_DIR}/AbstractFiducialModel.h
+         ${PROJECT_SOURCE_DIR}/AbstractFiducialParameters.h
+         ${PROJECT_SOURCE_DIR}/FiducialModelPi.h
+         ${PROJECT_SOURCE_DIR}/FiducialPiParameters.h
+         ${PROJECT_SOURCE_DIR}/FiducialDefines.h
+         DESTINATION include )
+
+install( TARGETS ${PROJECT_NAME} DESTINATION lib )
