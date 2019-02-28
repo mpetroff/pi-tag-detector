@@ -3,7 +3,8 @@ project(pitag)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
-set (CMAKE_CXX_STANDARD 11)
+set( CMAKE_CXX_STANDARD 11 )
+list( APPEND CMAKE_CXX_FLAGS "-O3 -fpic" )
 
 find_package(OpenCV REQUIRED)
 find_package(TinyXML REQUIRED)
@@ -31,7 +32,6 @@ target_link_libraries(${PROJECT_NAME}
   ${OpenCV_LIBS}
   ${TinyXML_LIBRARIES}
 )
-set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-D__LINUX__")
 
 add_executable(pitag-test
   pitag-test.cpp
@@ -41,4 +41,17 @@ target_link_libraries(pitag-test
   ${OpenCV_LIBS}
   ${TinyXML_LIBRARIES}
 )
-set_target_properties(pitag-test PROPERTIES COMPILE_FLAGS "-D__LINUX__")
+
+#############
+## Install ##
+#############
+
+install( FILES
+         ${PROJECT_SOURCE_DIR}/AbstractFiducialModel.h
+         ${PROJECT_SOURCE_DIR}/AbstractFiducialParameters.h
+         ${PROJECT_SOURCE_DIR}/FiducialModelPi.h
+         ${PROJECT_SOURCE_DIR}/FiducialPiParameters.h
+         ${PROJECT_SOURCE_DIR}/FiducialDefines.h
+         DESTINATION include )
+
+install( TARGETS ${PROJECT_NAME} DESTINATION lib )

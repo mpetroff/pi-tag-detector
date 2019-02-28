@@ -33,7 +33,7 @@
 #include <opencv/cv.hpp>
 #include <iostream>
 
-cv::Point2d cv::runetag::ellipseCenter( const cv::Matx33d& e ) {
+cv::Point2d cv::runetag::ipa_Fiducials::ellipseCenter( const cv::Matx33d& e ) {
     const double& e00 = e(0,0);
     const double& e01 = e(0,1);
     const double& e11 = e(1,1);
@@ -47,7 +47,7 @@ cv::Point2d cv::runetag::ellipseCenter( const cv::Matx33d& e ) {
     return cv::Point2d( centerx, centery );
 }
 
-inline void points( cv::RotatedRect& ellipse, cv::Point2f pt[] )
+static inline void points( cv::RotatedRect& ellipse, cv::Point2f pt[] )
 {
     double _angle = ellipse.angle*CV_PI/180.;
     float a = (float)cos(_angle)*0.5f;
@@ -63,7 +63,7 @@ inline void points( cv::RotatedRect& ellipse, cv::Point2f pt[] )
     pt[3].y = 2*ellipse.center.y - pt[1].y;
 }
 
-bool cv::runetag::ellipserefine( const cv::RotatedRect& ellipse, const cv::Mat& gradient_x, const cv::Mat& gradient_y, cv::Matx33d& out ) 
+bool cv::runetag::ipa_Fiducials::ellipserefine( const cv::RotatedRect& ellipse, const cv::Mat& gradient_x, const cv::Mat& gradient_y, cv::Matx33d& out ) 
 {
     const double major_axis = ellipse.size.width > ellipse.size.height ? ellipse.size.width : ellipse.size.height;
     const double s = major_axis / sqrt(2);
