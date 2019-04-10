@@ -1618,7 +1618,7 @@ unsigned long FiducialModelPi::LoadParameters(std::string directory_and_filename
                 std::cerr << "ERROR - FiducialModelPi::LoadParameters:" << std::endl;
                 std::cerr << "\t ... Error while loading xml configuration file (Check filename and syntax of the file):" << std::endl;
                 std::cerr << "\t ... '" << directory_and_filename << std::endl;
-                RET_FAILED;
+                return RET_FAILED;
         }
         std::cerr << "INFO - FiducialModelPi::LoadParameters:" << std::endl;
         std::cerr << "\t ... Parsing xml configuration file:" << std::endl;
